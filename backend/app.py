@@ -66,4 +66,4 @@ def predict_sales_batch():
 # Run the Flask app in debug mode
 if __name__ == '__main__':
     # For local development, use debug=True. In production, use a production-ready WSGI server.
-    superkart_api.run(debug=True, host='0.0.0.0', port=8080)
+    superkart_api.run(debug=True, host='0.0.0.0', port=5000)
