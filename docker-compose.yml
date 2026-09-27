@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend_files
+      dockerfile: Dockerfile
+    ports:
+      - "7860:7860"
+    # Use environment variables from .env file
+    env_file:
+      - ./.env
+    # Optionally, mount a volume for local development if you have data/model files
+    # volumes:
+    #   - ./backend_files:/app
+
+  frontend:
+    build:
+      context: ./frontend_files
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    # Frontend depends on backend to be ready
+    depends_on:
+      - backend
+    # Use environment variables from .env file
+    env_file:
+      - ./.env
+    # Mount a volume for live reloading during development
+    # volumes:
+    #   - ./frontend_files:/app
+
